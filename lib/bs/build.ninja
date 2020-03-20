@@ -1,0 +1,33 @@
+g_std_incl = /Users/prisc_000/working/GitHub/combining-variadics/node_modules/bs-platform/lib/ocaml
+g_pkg_flg = -bs-package-name combining-variadics -bs-ns CombiningVariadics
+src_root_dir = /Users/prisc_000/working/GitHub/combining-variadics
+bsc = /Users/prisc_000/.fnm/node-versions/v13.3.0/installation/pnpm-global/3/node_modules/.pnpm/registry.npmjs.org/bs-platform/7.0.2-dev.1/node_modules/bs-platform/lib/bsc.exe
+bsdep = /Users/prisc_000/.fnm/node-versions/v13.3.0/installation/pnpm-global/3/node_modules/.pnpm/registry.npmjs.org/bs-platform/7.0.2-dev.1/node_modules/bs-platform/lib/bsb_helper.exe
+warnings = -w -30-40+6+7+27+32..39+44+45+101 -warn-error +101
+bsc_flags = 
+ppx_flags = 
+g_dpkg_incls = 
+g_ns = -bs-ns CombiningVariadics
+bsb_dir_group = 0
+g_lib_incls = -I . -I src -I /Users/prisc_000/working/GitHub/combining-variadics/node_modules/wonka/lib/ocaml -I /Users/prisc_000/working/GitHub/combining-variadics/node_modules/bs-webapi/lib/ocaml
+rule build_ast_from_re
+  command = $bsc  $warnings -color always $bsc_flags -o $out -bs-syntax-only -bs-binary-ast $in
+  description = [34mBuilding[39m [2m${out}[22m
+build  src/Demo.reast : build_ast_from_re $src_root_dir/src/Demo.re
+rule build_deps
+  command = $bsdep -hash dc5f07b8b3a3135b5422fd9fab305ecf $g_ns -g $bsb_dir_group $in
+  restat = 1
+  description = [34mBuilding[39m [2m${out}[22m
+build  src/Demo.d : build_deps src/Demo.reast
+rule ml_cmj_cmi
+  command = $bsc -nostdlib $g_pkg_flg -color always -bs-suffix $g_lib_incls -I $g_std_incl $warnings $bsc_flags -o $out $in
+  dyndep = $in_e.d
+  restat = 1
+  description = [34mBuilding[39m [2m${out}[22m
+build  src/Demo-CombiningVariadics.cmj |  src/Demo-CombiningVariadics.cmi $src_root_dir/src/Demo.bs.js : ml_cmj_cmi src/Demo.reast ||  src/Demo.d
+  g_pkg_flg = $g_pkg_flg  -bs-package-output commonjs:src
+rule build_package
+  command = $bsc -w -49 -color always -no-alias-deps  $in
+  restat = 1
+  description = [34mBuilding[39m [2m${out}[22m
+build  CombiningVariadics.cmi : build_package CombiningVariadics.mlmap

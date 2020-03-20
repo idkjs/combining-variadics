@@ -1,0 +1,16 @@
+dependencies:
+  bs-webapi: 0.15.6
+  wonka: 4.0.7
+lockfileVersion: 5.1
+packages:
+  /bs-webapi/0.15.6:
+    dev: false
+    resolution:
+      integrity: sha512-J+6+fBhkZ8DC8Xrq5Zv7w5pufEv/23TSsHSPMMoOJ1tejEbmXvk8qkwUi0JqPhWmA86XyGMO7Z2XbNNUtd/CPw==
+  /wonka/4.0.7:
+    dev: false
+    resolution:
+      integrity: sha512-Uhyl2cgWCUksYtU0Jt8MSzKUqK4BVUrewWxnn1YlKL3Zco4sDcCUDkbgH0i762HJs1rtsq03cfzsCWxJKaDgVg==
+specifiers:
+  bs-webapi: 0.15.6
+  wonka: 4.0.7

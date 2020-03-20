@@ -1,0 +1,1 @@
+{ "dirs" : [ "src" ] , "pkgs" : [ [ "wonka" , "/Users/prisc_000/working/GitHub/combining-variadics/node_modules/wonka" ] , [ "bs-platform" , "/Users/prisc_000/working/GitHub/combining-variadics/node_modules/bs-platform" ] , [ "bs-webapi" , "/Users/prisc_000/working/GitHub/combining-variadics/node_modules/bs-webapi" ] ] , "generated" : [] }
