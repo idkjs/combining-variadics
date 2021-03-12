@@ -1,16 +1,33 @@
 dependencies:
   bs-webapi: 0.15.6
-  wonka: 4.0.7
-lockfileVersion: 5.1
+  gentype: 3.44.0
+  wonka: 5.0.0-rc.1
+devDependencies:
+  bs-platform: 9.0.1
+lockfileVersion: 5.2
 packages:
+  /bs-platform/9.0.1:
+    dev: true
+    hasBin: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-RxUrwxVBCx9AiiyFIthZwfPn+tAn9noRHCb9xJK4Uw2deGxIytqyoWDepMbH35v7EpxX0OhfXL5RrjHTaXersA==
   /bs-webapi/0.15.6:
     dev: false
     resolution:
       integrity: sha512-J+6+fBhkZ8DC8Xrq5Zv7w5pufEv/23TSsHSPMMoOJ1tejEbmXvk8qkwUi0JqPhWmA86XyGMO7Z2XbNNUtd/CPw==
-  /wonka/4.0.7:
+  /gentype/3.44.0:
+    dev: false
+    hasBin: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-+nbBrz3LO+OpiLr4tw8Mdy8LB/4vhGRfmiXMdZZFDNbK9k09KWIe071Zl8sOBlL+CAt7Nl1DyRVAaruhb9wuOw==
+  /wonka/5.0.0-rc.1:
     dev: false
     resolution:
-      integrity: sha512-Uhyl2cgWCUksYtU0Jt8MSzKUqK4BVUrewWxnn1YlKL3Zco4sDcCUDkbgH0i762HJs1rtsq03cfzsCWxJKaDgVg==
+      integrity: sha512-RD/ytJUeFq9+sYJaHKwafhehJ9VDWex581Ndy4+Gy6TIIi29G4Cr9zbkXYI24B5ytU7/6SkrCL4yHV3L2MyHeQ==
 specifiers:
+  bs-platform: ^9.0.1
   bs-webapi: 0.15.6
-  wonka: 4.0.7
+  gentype: ^3.44.0
+  wonka: 5.0.0-rc.1

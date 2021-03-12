@@ -29,20 +29,42 @@ let colorFromJs = (str: string): option(color) => {
 };
 
 let _ = "white"->colorFromJs |> Js.log;
-
 let waitForArray = () => Js.Promise.resolve([|1, 2, 3|]);
 let source =
   Wonka.make((. observer) => {
-    let (next, complete) = observer;
+    let next = observer.next;
+    let complete = observer.complete;
+  // let (next, complete) = observer;
     let cancelled = ref(false);
     let promise = waitForArray();
-    Js.Promise.then_(
-      arr =>
-        if (! cancelled^) {
-          Array.iter(next, arr);
-          complete();
-        },
-      promise,
-    );
-    () => cancelled := true;
+    let _ =
+      Js.Promise.then_(
+        arr =>
+          ! cancelled^
+            ? {
+              Array.iter(next, arr);
+              complete() |> Js.Promise.resolve;
+            }
+            : Js.Promise.resolve(),
+        promise,
+      );
+
+    (.) => cancelled := true;
   });
+// let waitForArray = () => Js.Promise.resolve([|1, 2, 3|]);
+// let source =
+//   Wonka.make((. observer) => {
+//     let next = observer.next;
+//     let complete = observer.complete;
+//     let cancelled = ref(false);
+//     let promise = waitForArray();
+//    let _ = Js.Promise.then_(
+//       arr =>
+//         ! cancelled^ ? {
+//           Array.iter(next, arr);
+//           complete();
+//         },
+//       promise,
+//     );
+//     (.) => cancelled := true;
+//   });
